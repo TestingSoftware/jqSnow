@@ -1,5 +1,5 @@
 (function($){
-	
+	var intervalOfTheSnow;
 	$.fn.snow = function(options){
 	
 			var $flake 			= $('<div class="flake" />').css({'position': 'absolute', 'top': '-50px'}),
@@ -11,21 +11,13 @@
 									maxSize		: 20,
 									newOn		: 500,
 									flakeColor	: ["#ffffff"],
-									durationMillis: null,
-									kill: false
+									durationMillis: null
 								},
 				options			= $.extend({}, defaults, options);
 			
-			var interval;
-			
-			if ( options.kill ) 
-			{
-				clearInterval(interval);
-				return;
-			}
 			$flake.html(options.flakeChar);
 
-			interval		= setInterval( function(){
+			intervalOfTheSnow		= setInterval( function(){
 				var startPositionLeft 	= Math.random() * documentWidth - 100,
 				 	startOpacity		= 0.5 + Math.random(),
 					sizeFlake			= options.minSize + Math.random() * options.maxSize,
@@ -59,7 +51,7 @@
 
 			if (options.durationMillis) {
 				setTimeout(function() {
-					clearInterval(interval);
+					clearInterval(intervalOfTheSnow);
 				}, options.durationMillis);
 			}	
 	};
