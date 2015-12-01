@@ -20,7 +20,7 @@
 			
 			if ( options.kill ) 
 			{
-				removeInterval(interval);
+				clearInterval(interval);
 				return;
 			}
 			$flake.html(options.flakeChar);
@@ -59,7 +59,7 @@
 
 			if (options.durationMillis) {
 				setTimeout(function() {
-					removeInterval(interval);
+					clearInterval(interval);
 				}, options.durationMillis);
 			}	
 	};
