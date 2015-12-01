@@ -1,5 +1,5 @@
+var intervalOfTheSnow;
 (function($){
-	var intervalOfTheSnow;
 	$.fn.snow = function(options){
 	
 			var $flake 			= $('<div class="flake" />').css({'position': 'absolute', 'top': '-50px'}),
