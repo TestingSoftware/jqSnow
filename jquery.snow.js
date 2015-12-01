@@ -11,13 +11,21 @@
 									maxSize		: 20,
 									newOn		: 500,
 									flakeColor	: ["#ffffff"],
-									durationMillis: null
+									durationMillis: null,
+									kill: false
 								},
 				options			= $.extend({}, defaults, options);
-							
+			
+			var interval;
+			
+			if ( options.kill ) 
+			{
+				removeInterval(interval);
+				return;
+			}
 			$flake.html(options.flakeChar);
 
-			var interval		= setInterval( function(){
+			interval		= setInterval( function(){
 				var startPositionLeft 	= Math.random() * documentWidth - 100,
 				 	startOpacity		= 0.5 + Math.random(),
 					sizeFlake			= options.minSize + Math.random() * options.maxSize,
